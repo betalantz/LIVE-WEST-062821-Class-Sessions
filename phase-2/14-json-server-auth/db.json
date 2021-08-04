@@ -1,0 +1,49 @@
+{
+  "users": [
+    {
+      "email": "simon@mail.com",
+      "password": "$2a$10$h9Wy2JwxYgt/1h16/kTDAOnaXufZA7i15pGPXdBCsFBtgP16CivEC",
+      "id": 1
+    },
+    {
+      "email": "lantz@mail.com",
+      "password": "$2a$10$1A1hV13aBnTDl5k4XiL8OuC2WvoJ5ymuNaOEDOrtE9lTZUj/fLMkG",
+      "id": 2
+    },
+    {
+      "email": "vinceboogie@mail.com",
+      "password": "$2a$10$o/aR59KBps7Hegw0tcFdleidr97tBQEZQqVb5bthNxvac7i88KiiW",
+      "id": 3
+    }
+  ],
+  "spacecraft": [
+    {
+      "name": "Mistaken Identity",
+      "type": "General Cargo Vessel",
+      "registration": "SOL-298",
+      "userId": 2,
+      "id": 1
+    },
+    {
+      "name": "Tortoise v Hare",
+      "type": "Battlecruiser",
+      "registration": "LUNA-566",
+      "userId": 3,
+      "id": 2
+    },
+    {
+      "name": "Paradoxical",
+      "type": "GSV",
+      "registration": "MARS-4789",
+      "userId": 3,
+      "id": 3
+    },
+    {
+      "name": "Optimus Prime",
+      "type": "Hauler",
+      "registration": "CERES-24890",
+      "userId": 3,
+      "id": 4
+    }
+  ]
+}
