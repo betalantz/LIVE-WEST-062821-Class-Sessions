@@ -8,10 +8,12 @@ developers that keeps track of all the freebies they obtain.
 
 We have three models: `Company`, `Dev`, and `Freebie`
 
-For our purposes, a `Company` has many `Freebie`s, a `Dev` has many `Freebie`s,
-and a `Freebie` belongs to a `Dev` and to a `Company`.
+**For our purposes, a `Company` has many `Freebie`s, a `Dev` has many `Freebie`s,
+and a `Freebie` belongs to a `Dev` and to a `Company`.**
 
 `Company` - `Dev` is a many to many relationship.
+
+Company --< Freebie >-- Dev
 
 **Note**: You should draw your domain on paper or on a whiteboard _before you
 start coding_. Remember to identify a single source of truth for your data.
