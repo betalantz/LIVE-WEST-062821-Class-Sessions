@@ -157,7 +157,7 @@ companies for the first dev in the database based on your seed data; and
   - takes a `dev` (an instance of the `Dev` class), an `item_name` (string), and a `value`
     as arguments, and creates a new `Freebie` instance associated with this
     company and the given dev
-- []`Company.oldest_company`
+- [x]`Company.oldest_company`
   - returns the `Company` instance with the earliest founding year
 
 #### Dev

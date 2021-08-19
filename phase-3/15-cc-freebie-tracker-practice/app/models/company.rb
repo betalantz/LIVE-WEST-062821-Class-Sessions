@@ -1,5 +1,9 @@
 class Company < ActiveRecord::Base
 
+    def self.oldest_company
+        self.all.order(:founding_year).first
+    end
+
     has_many :freebies
     has_many :devs, through: :freebies
 
