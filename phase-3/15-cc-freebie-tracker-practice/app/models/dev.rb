@@ -9,4 +9,8 @@ class Dev < ActiveRecord::Base
         # !self.freebies.where(item_name: item_name).empty?
     end
 
+    def give_away(dev, freebie)
+        freebie.update(dev: dev)
+    end
+
 end
