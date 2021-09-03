@@ -7,7 +7,8 @@ class GymsController < ApplicationController
     end
 
     def destroy
-
+        @gym.destroy
+        head :no_content
     end
 
     private
