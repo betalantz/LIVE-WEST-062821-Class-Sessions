@@ -1,8 +1,17 @@
 class GymsController < ApplicationController
 
-    before_action :find_gym
+    before_action :find_gym, only: [:show, :update, :destroy]
+
+    def index
+        render json: Gym.all
+    end
 
     def show
+        render json: @gym
+    end
+
+    def update
+        @gym.update!(gym_params)
         render json: @gym
     end
 
@@ -15,6 +24,10 @@ class GymsController < ApplicationController
 
     def find_gym
         @gym = Gym.find(params[:id])
+    end
+
+    def gym_params
+        params.permit(:name, :address)
     end
 
     # def render_not_found_response

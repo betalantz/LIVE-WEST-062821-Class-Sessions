@@ -12,6 +12,7 @@ class ClientsController < ApplicationController
 
     def update
         @client.update!(client_params)
+        render json: @client
     end
 
     private
