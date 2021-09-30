@@ -8,7 +8,7 @@ const Parks = (props) => {
   
   const parks = useSelector((state) => state.parks);
 
-  console.log(props);
+  // console.log(props);
 
   const mapParks = () => {
     // let parkArray = Object.values(parks);

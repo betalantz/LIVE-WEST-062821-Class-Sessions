@@ -18,7 +18,7 @@ const ParkCard = ({ park }) => {
       <button
         onClick={() => {
           // dispatch({ type: "INCREASE_VOTE", payload: id })
-          dispatchIncreaseVote(park.id);
+          dispatchIncreaseVote(park);
         }}
       >
         UpVote

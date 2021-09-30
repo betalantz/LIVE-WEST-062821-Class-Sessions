@@ -1,13 +1,23 @@
 import React, { useState } from 'react'
+import { addPark } from '../redux/actions'
+import { useDispatch } from 'react-redux'
 
 export default function AddParkForm() {
 
     const [name, setName] = useState("")
     const [image, setImage] = useState("")
+    const dispatch = useDispatch()
 
     function handleSubmit(e){
         e.preventDefault()
-
+        const park = {
+            name, 
+            image,
+            votes: 0
+        }
+        dispatch(addPark(park))
+        setName("")
+        setImage("")
     }
 
     return (

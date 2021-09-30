@@ -1,7 +1,7 @@
-import Yosemite from "../../assets/yosemite.jpg";
-import Yellowstone from "../../assets/yellowstone.jpg";
-import Zion from "../../assets/zion.jpg";
-import MountRainier from "../../assets/mount-rainier.jpg";
+// import Yosemite from "../../assets/yosemite.jpg";
+// import Yellowstone from "../../assets/yellowstone.jpg";
+// import Zion from "../../assets/zion.jpg";
+// import MountRainier from "../../assets/mount-rainier.jpg";
 import { INCREASE_VOTE } from "../actionTypes";
 
 
@@ -37,14 +37,11 @@ export function parksReducer(state = [], action) {
     case "SET_PARKS": {
       return action.payload;
     }
+    case "ADD_PARK": {
+      return [...state, action.payload]
+    }
     case INCREASE_VOTE: {
-      return {
-        ...state,
-        [action.payload]: {
-          ...state[action.payload],
-          votes: state[action.payload].votes + 1,
-        },
-      };
+      return state.map(p => p.id === action.payload ? {...p, votes: p.votes + 1} : p)
     }
     case "DECREASE_VOTE": {
       return {
