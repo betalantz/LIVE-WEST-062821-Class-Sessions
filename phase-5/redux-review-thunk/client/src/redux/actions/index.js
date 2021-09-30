@@ -1,16 +1,9 @@
 import { INCREASE_VOTE } from "../actionTypes"
 
 export function increaseVote(park) {
-  // return { type: INCREASE_VOTE, payload: id }
-  return (dispatch, getState) => {
-    // setTimeout(
-    //   () => dispatch({ type: INCREASE_VOTE, payload: id })
-    // , 3000)
-    // fetch('https://rickandmortyapi.com/api/character')
-    // .then(resp => resp.json())
-    // .then(data => {
-    //   console.log(data)
-      dispatch({ type: INCREASE_VOTE, payload: park.id })
+  // return { type: INCREASE_VOTE, payload: id } // this would be a normal action creator returning an object
+  return (dispatch, getState) => { // we need to update on the backend, so we need a thunk!
+      dispatch({ type: INCREASE_VOTE, payload: park.id }) // optomistic rendering
       const newVotes = {votes: park.votes + 1}
       fetch(`/parks/${park.id}`, {
         method: "PATCH",
@@ -23,7 +16,9 @@ export function increaseVote(park) {
   }
 }
 
-export function decreaseVote(id) {
+export function decreaseVote(id) { // since this action creator is not doing anything asynchronous
+  //there is no reason for it to be a thunk (returning a function)
+  // it could just be a "regular" action creator which returns an action object as follows:
   // return { type: "DECREASE_VOTE", payload: id}
   return (dispatch, getState) => {
     dispatch({ type: "DECREASE_VOTE", payload: id})
@@ -33,7 +28,7 @@ export function decreaseVote(id) {
 
 
 export function getCharacters() {
-  return (dispatch, getState) => {
+  return (dispatch, getState) => {  // getState is another function available inside of a thunk to read data from the Redux store, but is unused here
     fetch('https://rickandmortyapi.com/api/character')
       .then(resp => resp.json())
       .then(data => {
@@ -55,10 +50,13 @@ export function addPark(park) {
     
     const config = {
       method: "POST",
-      
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(park)
     }
     fetch('/parks', config)
     .then(res => res.json())
-    .then(newPark => dispatch({type: "ADD_PARK", payload: newPark}))
+    .then(newPark => dispatch({type: "ADD_PARK", payload: newPark})) // pessimistic rendering 
   }
 }
