@@ -7,12 +7,11 @@ const initialUser = {
 
 export function userReducer(state = initialUser, action) {
   switch (action.type) {
-    case "SET_CHARACTERS": {
+    case "SET_CHARACTERS": 
       return {
         ...state,
         characters: action.payload
       }
-    }
     default:
       return state;
   }

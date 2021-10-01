@@ -16,15 +16,23 @@ export function increaseVote(park) {
   }
 }
 
-export function decreaseVote(id) { // since this action creator is not doing anything asynchronous
-  //there is no reason for it to be a thunk (returning a function)
-  // it could just be a "regular" action creator which returns an action object as follows:
-  // return { type: "DECREASE_VOTE", payload: id}
-  return (dispatch, getState) => {
-    dispatch({ type: "DECREASE_VOTE", payload: id})
-
+export function decreaseVote(park) {
+  // return { type: "DECREASE_VOTE", payload: park.id } // this would be a normal action creator returning an object
+  return (dispatch) => { // we need to update on the backend, so we need a thunk!
+      dispatch({ type: "DECREASE_VOTE", payload: park.id }) // optomistic rendering
+      const newVotes = {votes: park.votes - 1}
+      fetch(`/parks/${park.id}`, {
+        method: "PATCH",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newVotes)
+      })
+    // })
   }
 }
+
+// export const decreaseVote = (park) => ({ type: "DECREASE_VOTE", payload: park.id}) // if we only want to update the DOM and not the database, this is sufficient
 
 
 export function getCharacters() {

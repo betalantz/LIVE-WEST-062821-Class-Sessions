@@ -34,24 +34,14 @@ import { INCREASE_VOTE } from "../actionTypes";
 
 export function parksReducer(state = [], action) {
   switch (action.type) {
-    case "SET_PARKS": {
+    case "SET_PARKS": 
       return action.payload;
-    }
-    case "ADD_PARK": {
+    case "ADD_PARK": 
       return [...state, action.payload]
-    }
-    case INCREASE_VOTE: {
+    case INCREASE_VOTE: 
       return state.map(p => p.id === action.payload ? {...p, votes: p.votes + 1} : p)
-    }
-    case "DECREASE_VOTE": {
-      return {
-        ...state,
-        [action.payload]: {
-          ...state[action.payload],
-          votes: state[action.payload].votes - 1,
-        },
-      };
-    }
+    case "DECREASE_VOTE": 
+      return state.map(p => p.id === action.payload ? {...p, votes: p.votes - 1} : p)
     default:
       return state;
   }

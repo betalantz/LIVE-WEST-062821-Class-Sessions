@@ -26,7 +26,7 @@ const ParkCard = ({ park }) => {
       <button
         onClick={() => {
           // dispatch(decreaseVote(park.id));
-          dispatchDecreaseVote(park.id)
+          dispatchDecreaseVote(park)
         }}
       >
         DownVote
